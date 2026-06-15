@@ -12,6 +12,47 @@
  */
 
 export default class Citizen{
+    #name;
+    #rank;
+    #home;
+
+    constructor(name){
+        this.#name = name;
+        this.#rank = Math.floor(Math.random() * 3) + 2;
+        this.#home = null;
+    }
+
+    get name(){
+        return this.#name;
+    }
+
+    set name(newName){
+        if(typeof newName === "string" && newName !== ""){
+            this.#name = newName;
+        }
+    }
+
+    get rank(){
+        return this.#rank;
+    }
+
+    set rank(newRank){
+        if(Number.isInteger(newRank) && newRank >= 1 && newRank <= 4){
+            this.#rank = newRank;
+        }
+    }
+
+    get home(){
+        return this.#home;
+    }
+
+    set home(newHome){
+        this.#home = newHome;
+    }
+
+    toString(){
+        return `${this.name}, Citizen, Rank ${this.rank}`;
+    }
 
     /* Math.random() gives a value from 0 to <1
     3 scales it to 0–<3
